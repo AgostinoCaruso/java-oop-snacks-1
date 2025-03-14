@@ -14,6 +14,10 @@ public class RegistroStudenti {
     private String cognomeStudente;
 
     // costruttore
+    public RegistroStudenti(){
+        this.nomeStudente = "nome non assegnato";
+        this.cognomeStudente = "cognome non assegnato";
+    }
     public RegistroStudenti(String nome, String cognome) {
         this.nomeStudente = nome;
         this.cognomeStudente = cognome;
@@ -38,7 +42,12 @@ public class RegistroStudenti {
 
     // metodi
     public void setNewRegistroStudentiArray() {
-        
+        if (arrayRegistroStudenti == null || arrayRegistroStudenti.length == 0) {
+            arrayRegistroStudenti = new RegistroStudenti[1];
+            arrayRegistroStudenti[0] = this;
+            return;
+        }
+
         RegistroStudenti[] temp = arrayRegistroStudenti;
         int num = arrayRegistroStudenti.length;
 
@@ -46,9 +55,6 @@ public class RegistroStudenti {
 
         arrayRegistroStudenti[0] = this;
 
-        // for (int i = 1; i < arrayRegistroStudenti.length; i++) {
-        //     arrayRegistroStudenti[i] = temp[i - 1];
-        // }
         System.arraycopy(temp, 0, arrayRegistroStudenti, 1, num);
     }
 
